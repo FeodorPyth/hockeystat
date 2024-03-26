@@ -1,0 +1,11 @@
+{% load static %}
+<aside>
+  <img src="{% static 'img/hockey.png' %}" alt="Лого">
+  <span class="logo">Хоккейру</span>
+  <h3>Навигация</h3>
+  <ul>
+    <a href="{% url 'blog:index' %}"><li><i class="fa-solid fa-house"></i> Главная</li></a>
+    <a href="{% url 'blog:about' %}"><li><i class="fa-solid fa-address-card"></i> Про нас</li></a>
+    <a href="{% url 'blog:contacts' %}"><li><i class="fa-solid fa-address-book"></i> Контакты</li></a>
+  </ul>
+</aside>

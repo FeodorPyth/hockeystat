@@ -13,18 +13,23 @@ class User(AbstractUser):
     email = models.EmailField(
         max_length=LENGTH_FOR_EMAIL,
         unique=True,
-        verbose_name='Адрес электронной почты'
+        verbose_name='E-mail address'
     )
     username = models.CharField(
         max_length=LENGTH_FOR_USERNAME,
         blank=True,
         unique=True,
         help_text=(
-            'Необходимое поле. 150 символов или меньше.'
-            'Только буквы, цифры и @/./+/-/_.'
+            'Required field. 150 characters or less.'
+            'Only letters, numbers and @/./+/-/_.'
         ),
         validators=[username_validator, validate_username_me],
-        verbose_name='Имя пользователя',
+        verbose_name='Username',
+    )
+    avatar = models.ImageField(
+        upload_to='media/avatars/',
+        blank=True,
+        verbose_name='Photo',
     )
 
     USERNAME_FIELD = 'email'
@@ -37,8 +42,8 @@ class User(AbstractUser):
 
     class Meta:
         ordering = ('username',)
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
         constraints = [
             models.UniqueConstraint(
                 fields=['email', 'username'],

@@ -9,6 +9,5 @@ def validate_username_me(value):
     Значение не должно быть равно 'me'.
     """
     if value == URL_PATH_NAME:
-        raise ValidationError(f'Нельзя использовать {URL_PATH_NAME}'
-                              ' в качестве имени пользователя.')
+        raise ValidationError(f'Can not use {URL_PATH_NAME} as username')
     return value
